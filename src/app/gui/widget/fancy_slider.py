@@ -1,16 +1,16 @@
 import typing
 
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot, pyqtProperty
-from PyQt5.QtWidgets import QFrame, QHBoxLayout, QLabel, QSlider, QWidget
+from PySide6.QtCore import Qt, Signal, Slot, Property
+from PySide6.QtWidgets import QFrame, QHBoxLayout, QLabel, QSlider, QWidget
 
 
 class FancySlider(QWidget):
-    actionTriggered = pyqtSignal(int)
-    rangeChanged = pyqtSignal(int, int)
-    sliderMoved = pyqtSignal(int)
-    sliderPressed = pyqtSignal()
-    sliderReleased = pyqtSignal()
-    valueChanged = pyqtSignal(int)
+    actionTriggered = Signal(int)
+    rangeChanged = Signal(int, int)
+    sliderMoved = Signal(int)
+    sliderPressed = Signal()
+    sliderReleased = Signal()
+    valueChanged = Signal(int)
 
     def __init__(self, parent: typing.Optional[QWidget] = None) -> None:
         super().__init__(parent)
@@ -42,7 +42,7 @@ class FancySlider(QWidget):
         layout.addStretch()
         layout.addWidget(self._label)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def setValue(self, value: int) -> None:
         self._slider.setValue(value)
         self._label.setText(f"{value} ")
@@ -50,7 +50,7 @@ class FancySlider(QWidget):
     def value(self) -> int:
         return self._slider.value()
 
-    @pyqtSlot(int, int)
+    @Slot(int, int)
     def setRange(self, a: int, b: int) -> None:
         self._slider.setRange(a, b)
 
@@ -76,7 +76,7 @@ class FancySlider(QWidget):
         return self._slider.minimum()
 
     # support QDataWidgetMapper
-    @pyqtProperty(int, user=True)
+    @Property(int, user=True)
     def sliderValue(self) -> int:
         return self.value()
 

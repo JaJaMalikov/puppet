@@ -1,14 +1,14 @@
 import typing
 
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QAbstractItemModel,
     QMimeData,
     QModelIndex,
     QSize,
     Qt,
     QVariant,
-    pyqtSignal,
-    pyqtSlot,
+    Signal,
+    Slot,
 )
 
 from .track import Track
@@ -153,7 +153,7 @@ class TrackModelAdapter(QAbstractItemModel):
     def selectRow(self, index: QModelIndex) -> None:
         self._dataSource.select(index.row())
 
-    # @pyqtSlot(list)
+    # @Slot(list)
     # def dataSourceChanged(
     #     self, modelIndexes: typing.List[typing.Tuple[int, int]]
     # ) -> None:

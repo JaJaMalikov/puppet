@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QPoint, QRectF, Qt
-from PyQt5.QtGui import QBrush, QColor, QPainter, QPainterPath, QPen
-from PyQt5.QtWidgets import QGraphicsItem, QWidget
+from PySide6.QtCore import QPoint, QRectF, Qt
+from PySide6.QtGui import QBrush, QColor, QPainter, QPainterPath, QPen
+from PySide6.QtWidgets import QGraphicsItem, QWidget
 
 
 class Bone(QGraphicsItem):

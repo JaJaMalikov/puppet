@@ -1,13 +1,13 @@
 import sys
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication
 from qtmodern import styles
 
 from .gui import AppWindow
 
 try:
-    from PyQt5.QtWinExtras import QtWin
+    from PySide6.QtWinExtras import QtWin
 
     QtWin.setCurrentProcessExplicitAppUserModelID("com.paspallas.tool.puppet")
 except ImportError:
@@ -15,6 +15,7 @@ except ImportError:
 
 
 def start() -> None:
+    """Démarre l'application principale."""
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
 
     app = QApplication([])

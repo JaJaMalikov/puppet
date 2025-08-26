@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QLineF, QPointF, QRectF, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QColor, QFontMetrics, QKeyEvent, QPainter, QPen
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QLineF, QPointF, QRectF, Qt, Signal, Slot
+from PySide6.QtGui import QColor, QFontMetrics, QKeyEvent, QPainter, QPen
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsLineItem,
     QGraphicsObject,
@@ -21,7 +21,7 @@ __height__ = 20
 
 
 class PlayHeadItem(QGraphicsObject):
-    sigPlayHeadPositionChange = pyqtSignal(float)
+    sigPlayHeadPositionChange = Signal(float)
 
     def __init__(self, fm: QFontMetrics) -> None:
         super().__init__()
@@ -101,23 +101,23 @@ class PlayHeadItem(QGraphicsObject):
         painter.setPen(Qt.white)
         painter.drawText(self._labelRect, self._label)
 
-    @pyqtSlot()
+    @Slot()
     def advance(self) -> None:
         self.setX(self.x() + __pxPerFrame__)
 
-    @pyqtSlot()
+    @Slot()
     def rewind(self) -> None:
         self.setX(self.x() - __pxPerFrame__)
 
-    @pyqtSlot(float)
+    @Slot(float)
     def setPlaybackPosition(self, x: float) -> None:
         self.setX(x)
 
-    @pyqtSlot(float)
+    @Slot(float)
     def onSceneRectHeightChange(self, height: float) -> None:
         self._marker.setLine(0, 0, 0, height - scale.__height__)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def onVerticalScrollBarChange(self, scroll: int) -> None:
         # Keep the item in a fixed y position
         self._currentY = scroll + scale.__textY__

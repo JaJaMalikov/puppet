@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QLineF, QRectF, Qt
-from PyQt5.QtGui import QColor, QPainter, QPainterPath, QPen
-from PyQt5.QtWidgets import QGraphicsItem, QWidget
+from PySide6.QtCore import QLineF, QRectF, Qt
+from PySide6.QtGui import QColor, QPainter, QPainterPath, QPen
+from PySide6.QtWidgets import QGraphicsItem, QWidget
 
 
 class Overlay(QGraphicsItem):

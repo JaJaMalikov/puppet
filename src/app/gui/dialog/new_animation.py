@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import Qt, pyqtSlot, QRegExp
-from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import Qt, Slot, QRegularExpression
+from PySide6.QtGui import QRegularExpressionValidator
+from PySide6.QtWidgets import (
     QDialog,
     QDialogButtonBox,
     QHBoxLayout,
@@ -14,6 +14,8 @@ from PyQt5.QtWidgets import (
 
 
 class NewAnimationDialog(QDialog):
+    """Boîte de dialogue pour créer une nouvelle animation."""
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowTitle("Create a new animation")
@@ -26,7 +28,7 @@ class NewAnimationDialog(QDialog):
         self._buttonBox.rejected.connect(self.reject)
 
         self._name = QLineEdit("")
-        self._name.setValidator(QRegExpValidator(QRegExp("[a-zA-Z0-9_()]*")))
+        self._name.setValidator(QRegularExpressionValidator(QRegularExpression("[a-zA-Z0-9_()]*")))
         self._label = QLabel("Name")
 
         hbox = QHBoxLayout()
@@ -39,4 +41,5 @@ class NewAnimationDialog(QDialog):
         vbox.addWidget(self._buttonBox)
 
     def name(self) -> str:
+        """Retourne le nom saisi par l'utilisateur."""
         return self._name.text()

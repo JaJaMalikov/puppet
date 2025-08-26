@@ -1,4 +1,4 @@
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QEvent,
     QLineF,
     QPoint,
@@ -6,10 +6,10 @@ from PyQt5.QtCore import (
     QRectF,
     QSize,
     Qt,
-    pyqtSignal,
-    pyqtSlot,
+    Signal,
+    Slot,
 )
-from PyQt5.QtGui import (
+from PySide6.QtGui import (
     QBrush,
     QColor,
     QConicalGradient,
@@ -22,12 +22,12 @@ from PyQt5.QtGui import (
     QResizeEvent,
     QTransform,
 )
-from PyQt5.QtWidgets import QHBoxLayout, QLabel, QSizePolicy, QSlider, QWidget
+from PySide6.QtWidgets import QHBoxLayout, QLabel, QSizePolicy, QSlider, QWidget
 
 
 class ColorPickerWidget(QWidget):
 
-    sigSelectedColorChanged = pyqtSignal(str)
+    sigSelectedColorChanged = Signal(str)
 
     radius = 175
     size = radius / 2

@@ -1,14 +1,14 @@
 import pickle
 import typing
 
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QAbstractItemModel,
     QMimeData,
     QModelIndex,
     Qt,
     QVariant,
-    pyqtSignal,
-    pyqtSlot,
+    Signal,
+    Slot,
 )
 
 from .animation_frame import AnimationFrame
@@ -196,7 +196,7 @@ class AnimationFrameModel(QAbstractItemModel):
 
         return False
 
-    @pyqtSlot(list)
+    @Slot(list)
     def dataSourceChanged(
         self, modelIndexes: typing.List[typing.Tuple[int, int]]
     ) -> None:

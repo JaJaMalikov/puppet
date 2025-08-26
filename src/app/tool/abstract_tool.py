@@ -1,7 +1,7 @@
 from abc import ABC, ABCMeta, abstractmethod
 
-from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsScene, QGraphicsSceneMouseEvent
+from PySide6.QtCore import QObject, Signal, Slot
+from PySide6.QtWidgets import QGraphicsItem, QGraphicsScene, QGraphicsSceneMouseEvent
 
 
 class AbstractTool:

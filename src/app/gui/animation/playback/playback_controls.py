@@ -1,13 +1,13 @@
 import typing
 
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QWidget
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import QWidget
 
 from .playback_ui import PlayBackUi
 
 
 class PlayBackControls(QWidget):
-    sigSelectedViewChanged = pyqtSignal(int)
+    sigSelectedViewChanged = Signal(int)
 
     def __init__(self, parent: typing.Optional[QWidget] = None) -> None:
         super().__init__(parent)

@@ -1,6 +1,6 @@
 import typing
 
-from PyQt5.QtCore import QMetaMethod, QObject
+from PySide6.QtCore import QMetaMethod, QObject
 
 
 def getSignal(obj: QObject, signalName: str) -> typing.Any:

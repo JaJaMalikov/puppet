@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QObject, Qt, pyqtSlot
-from PyQt5.QtWidgets import QAction, QMainWindow, QMenu, QMenuBar
+from PySide6.QtCore import QObject, Qt, Slot
+from PySide6.QtWidgets import QAction, QMainWindow, QMenu, QMenuBar
 
 
 class MainMenu(QObject):
@@ -46,13 +46,13 @@ class MainMenu(QObject):
         view_fullscreen.triggered.connect(self.setfullScreen)
         view_menu.addAction(view_fullscreen)
 
-    @pyqtSlot()
+    @Slot()
     def setfullScreen(self):
         if not self._parent.windowState() & Qt.WindowFullScreen:
             self._parent.setWindowState(Qt.WindowFullScreen)
         else:
             self._parent.setWindowState(Qt.WindowMaximized)
 
-    @pyqtSlot()
+    @Slot()
     def quitApplication(self):
         self._parent.close()

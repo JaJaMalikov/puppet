@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QPoint
-from PyQt5.QtWidgets import QAction, QGraphicsItem, QMenu
+from PySide6.QtCore import QPoint
+from PySide6.QtWidgets import QAction, QGraphicsItem, QMenu
 
 
 class ItemMenuDelegate(QMenu):

@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QGraphicsItem
+from PySide6.QtCore import QObject, Signal, Slot
+from PySide6.QtWidgets import QGraphicsItem
 
 from .animation import AnimationList, AnimationListModel, AnimationModel
 from .animation_frame import AnimationFrame, AnimationFrameModel
@@ -8,7 +8,7 @@ from .spritesheet import Sprite, SpriteSheetCollectionModel
 
 # TODO used by the spritesheets
 class SpriteCollectionModel(QObject):
-    spriteAddedToCollection = pyqtSignal(QGraphicsItem)
+    spriteAddedToCollection = Signal(QGraphicsItem)
 
     def __init__(self):
         super().__init__()
@@ -24,10 +24,10 @@ class SpriteCollectionModel(QObject):
 
 
 class Document(QObject):
-    sigSpritesChanged = pyqtSignal()
-    sigSpriteSheetsChanged = pyqtSignal()
+    sigSpritesChanged = Signal()
+    sigSpriteSheetsChanged = Signal()
 
-    sigSpriteAddedToCollection = pyqtSignal(QGraphicsItem)
+    sigSpriteAddedToCollection = Signal(QGraphicsItem)
 
     def __init__(self):
         super().__init__()

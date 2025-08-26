@@ -1,8 +1,8 @@
 from typing import Any, Dict
 
-from PyQt5.QtCore import QLineF, QPointF, QRectF, Qt, QTimer, pyqtSignal
-from PyQt5.QtGui import QBrush, QColor, QPainter, QPainterPath, QPen
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QLineF, QPointF, QRectF, Qt, QTimer, Signal
+from PySide6.QtGui import QBrush, QColor, QPainter, QPainterPath, QPen
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsObject,
     QGraphicsScene,
@@ -15,8 +15,8 @@ from .rectangle import Rectangle
 
 
 class RectangleEditor(QGraphicsObject):
-    sigResize = pyqtSignal(QRectF)
-    sigPositionChange = pyqtSignal(QPointF)
+    sigResize = Signal(QRectF)
+    sigPositionChange = Signal(QPointF)
 
     HANDLE_SIZE = 1.5
 

@@ -2,9 +2,9 @@ import typing
 from . import operation
 
 
-from PyQt5.QtCore import QObject, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QGraphicsItem
+from PySide6.QtCore import QObject, Qt, Signal, Slot
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QGraphicsItem
 
 from ...collection import SpriteStack
 from .frame_sprite import FrameSprite
@@ -13,13 +13,13 @@ from .frame_sprite import FrameSprite
 class AnimationFrame(QObject):
     """A Collection of framesprites that compose an animation frame"""
 
-    sigFrameDataChanged = pyqtSignal(list)
-    sigFrameLayoutAboutToChange = pyqtSignal()
-    sigFrameLayoutChanged = pyqtSignal()
-    sigAddedItem = pyqtSignal()
-    sigAddToScene = pyqtSignal(QGraphicsItem)
-    sigDeleteFromScene = pyqtSignal(QGraphicsItem)
-    sigSelectedItem = pyqtSignal(int)
+    sigFrameDataChanged = Signal(list)
+    sigFrameLayoutAboutToChange = Signal()
+    sigFrameLayoutChanged = Signal()
+    sigAddedItem = Signal()
+    sigAddToScene = Signal(QGraphicsItem)
+    sigDeleteFromScene = Signal(QGraphicsItem)
+    sigSelectedItem = Signal(int)
 
     def __init__(self) -> None:
         super().__init__()
@@ -89,7 +89,7 @@ class AnimationFrame(QObject):
         sprite.sigIncreaseZ.disconnect()
         sprite.sigDecreaseZ.disconnect()
 
-    @pyqtSlot(int)
+    @Slot(int)
     def onIncreaseZ(self, sprite_index: int) -> None:
         if sprite_index == self._sprites.last():
             return
@@ -99,7 +99,7 @@ class AnimationFrame(QObject):
         self.sigFrameLayoutChanged.emit()
         self.sigSelectedItem.emit(self._sprites.modelIndex(sprite_index + 1))
 
-    @pyqtSlot(int)
+    @Slot(int)
     def onDecreaseZ(self, sprite_index: int) -> None:
         if sprite_index == 0:
             return
@@ -112,7 +112,7 @@ class AnimationFrame(QObject):
     def __len__(self) -> int:
         return len(self._sprites)
 
-    @pyqtSlot(list)
+    @Slot(list)
     def spriteDataChanged(self, indexes: typing.List[typing.Tuple[int, int]]) -> None:
         modelIndexes = []
 
@@ -122,10 +122,10 @@ class AnimationFrame(QObject):
 
         self.sigFrameDataChanged.emit(modelIndexes)
 
-    @pyqtSlot(QGraphicsItem)
+    @Slot(QGraphicsItem)
     def addGraphicItem(self, item: QGraphicsItem) -> None:
         self.sigAddToScene.emit(item)
 
-    @pyqtSlot(QGraphicsItem)
+    @Slot(QGraphicsItem)
     def removeGraphicItem(self, item: QGraphicsItem) -> None:
         self.sigDeleteFromScene.emit(item)

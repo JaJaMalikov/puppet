@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QPushButton
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import QPushButton
 
 
 class ColorButton(QPushButton):
@@ -11,7 +11,7 @@ class ColorButton(QPushButton):
         self._default = "#ffffff"
         self.setColor(self._default)
 
-    @pyqtSlot(str)
+    @Slot(str)
     def setColor(self, color: str):
         if color:
             self.setStyleSheet(f"background-color: {color}")

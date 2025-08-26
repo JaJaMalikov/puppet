@@ -1,6 +1,6 @@
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QIcon, QMouseEvent, QPaintEvent, QWheelEvent
-from PyQt5.QtWidgets import QLabel, QVBoxLayout, QWidget
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtGui import QIcon, QMouseEvent, QPaintEvent, QWheelEvent
+from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget
 
 from ...resources import resources
 from .. import style
@@ -8,7 +8,7 @@ from .double_slider import DoubleSlider
 
 
 class ZoomSlider(QWidget):
-    zoomChanged = pyqtSignal(float)
+    zoomChanged = Signal(float)
 
     def __init__(self, *args, min_: float = 1, max_: float = 25, **kwargs) -> None:
         super().__init__(*args, **kwargs)
@@ -29,7 +29,7 @@ class ZoomSlider(QWidget):
 
         self.slider.valueChanged.connect(self.zoomChanged)
 
-    @pyqtSlot(float)
+    @Slot(float)
     def setValue(self, value: float) -> None:
         self.slider.setValue(value, False)
 

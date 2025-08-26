@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QEvent, QObject, QPoint, Qt
-from PyQt5.QtGui import QMouseEvent
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QEvent, QObject, QPoint, Qt
+from PySide6.QtGui import QMouseEvent
+from PySide6.QtWidgets import (
     QAbstractScrollArea,
     QApplication,
     QGraphicsView,

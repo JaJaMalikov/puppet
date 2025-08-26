@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QObject, QPoint, Qt, pyqtSlot
-from PyQt5.QtGui import QBrush, QColor, QKeyEvent, QPainter, QPixmap, QTransform
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QObject, QPoint, Qt, Slot
+from PySide6.QtGui import QBrush, QColor, QKeyEvent, QPainter, QPixmap, QTransform
+from PySide6.QtWidgets import (
     QAction,
     QGraphicsItem,
     QGraphicsPixmapItem,
@@ -155,14 +155,14 @@ class SpriteObject(QObject):
     def setSpriteItem(self, item: Sprite):
         self._spriteItem = item
 
-    @pyqtSlot(int)
+    @Slot(int)
     def setOpacity(self, opacity: int) -> None:
         self._spriteItem.setOpacity(opacity)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def setVflip(self) -> None:
         self._spriteItem.flipVertical()
 
-    @pyqtSlot(int)
+    @Slot(int)
     def setHflip(self) -> None:
         self._spriteItem.flipHorizontal()

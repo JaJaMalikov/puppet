@@ -1,9 +1,9 @@
-from PyQt5 import QtWidgets, QtGui, QtCore
+from PySide6 import QtWidgets, QtGui, QtCore
 from math import sqrt
 
 
 class RadialMenu(QtWidgets.QGraphicsObject):
-    buttonClicked = QtCore.pyqtSignal(int)
+    buttonClicked = QtCore.Signal(int)
 
     def __init__(self, parent=None):
         super().__init__(parent)

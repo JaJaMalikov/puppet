@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QGraphicsItem, QWidget
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import QGraphicsItem, QWidget
 
 from ...model.document import Document
 from ...tool import SceneToolManager
@@ -51,11 +51,11 @@ class CharEditorWidget(QWidget):
         self._ui.spriteProperty.setModel(self._document._currentFrameModel)
         self._ui.spriteListBox.setModel(self._document._currentFrameModel)
 
-    @pyqtSlot(str, bool)
+    @Slot(str, bool)
     def setTool(self, tool_cls: str, activate: bool) -> None:
         self._toolmanaget.setTool(tool_cls, activate)
 
-    @pyqtSlot(bool)
+    @Slot(bool)
     def toggleSpritePropertyVisibility(self, visible: bool) -> None:
         self._ui.spriteListBox.setVisible(not visible)
         self._ui.spriteProperty.setVisible(not visible)

@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QDockWidget, QGraphicsItem, QWidget
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import QDockWidget, QGraphicsItem, QWidget
 
 from ...controller import SpriteGroupController, SpritePaletteController
 from ...model.document import Document
@@ -13,7 +13,7 @@ from .sprite_palette_ui import SpritePaletteUi
 
 
 class SpritePaletteDock(QDockWidget):
-    sigSelectedSprite = pyqtSignal(QGraphicsItem)
+    sigSelectedSprite = Signal(QGraphicsItem)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -56,7 +56,7 @@ class SpritePaletteDock(QDockWidget):
         self._groupModel.sigGroupAdded.connect(self._ui.spritePalScene.addItems)
         self._groupModel.sigGroupDeleted.connect(self._ui.spritePalScene.delItems)
 
-    @pyqtSlot(SpriteSheet)
+    @Slot(SpriteSheet)
     def onAddSheet(self, sheet: SpriteSheet) -> None:
         self._groupController.addGroup(sheet)
 
@@ -64,7 +64,7 @@ class SpritePaletteDock(QDockWidget):
         self._ui.spritesheetList.addItem(sheet.name)
         self._ui.spritesheetList.setCurrentRow(row + 1)
 
-    @pyqtSlot()
+    @Slot()
     def onDelSheet(self) -> None:
         row = self._ui.spritesheetList.currentRow()
         item = self._ui.spritesheetList.currentItem()
@@ -72,7 +72,7 @@ class SpritePaletteDock(QDockWidget):
             self._groupController.delGroup(item.text())
             self._ui.spritesheetList.takeItem(row)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def onCurrentRowChanged(self, row: int) -> None:
         item = self._ui.spritesheetList.item(row)
         if item:

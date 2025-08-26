@@ -1,6 +1,6 @@
 import typing
 
-from PyQt5.QtCore import QAbstractListModel, QModelIndex, Qt, QVariant
+from PySide6.QtCore import QAbstractListModel, QModelIndex, Qt, QVariant
 
 from .animation import Animation
 

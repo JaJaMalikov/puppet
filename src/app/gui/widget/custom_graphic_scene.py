@@ -1,7 +1,7 @@
 import typing
 
-from PyQt5.QtCore import QObject, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QObject, Qt, Signal, Slot
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsScene,
     QGraphicsSceneMouseEvent,
@@ -10,8 +10,8 @@ from PyQt5.QtWidgets import (
 
 
 class CustomGraphicScene(QGraphicsScene):
-    sigSelectedItem = pyqtSignal(QGraphicsItem)
-    sigNoItemSelected = pyqtSignal()
+    sigSelectedItem = Signal(QGraphicsItem)
+    sigNoItemSelected = Signal()
 
     def __init__(
         self, width: float, height: float, parent: typing.Optional[QObject] = None
@@ -22,17 +22,17 @@ class CustomGraphicScene(QGraphicsScene):
         self.setItemIndexMethod(QGraphicsScene.NoIndex)
         self.focusItemChanged.connect(self._onFocusItemChanged)
 
-    @pyqtSlot(list)
+    @Slot(list)
     def addItems(self, items: typing.List[QGraphicsItem]) -> None:
         for item in items:
             self.addItem(item)
 
-    @pyqtSlot(list)
+    @Slot(list)
     def delItems(self, items: typing.List[QGraphicsItem]) -> None:
         for item in items:
             self.removeItem(item)
 
-    @pyqtSlot(QGraphicsItem, QGraphicsItem, Qt.FocusReason)
+    @Slot(QGraphicsItem, QGraphicsItem, Qt.FocusReason)
     def _onFocusItemChanged(
         self, new: QGraphicsItem, old: QGraphicsItem, reason: Qt.FocusReason
     ) -> None:

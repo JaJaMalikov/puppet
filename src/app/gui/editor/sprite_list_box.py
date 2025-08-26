@@ -1,15 +1,15 @@
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QAbstractItemModel,
     QModelIndex,
     QObject,
     QItemSelectionModel,
     Qt,
     QVariant,
-    pyqtSignal,
-    pyqtSlot,
+    Signal,
+    Slot,
 )
-from PyQt5.QtGui import QPaintEvent, QMouseEvent, QWheelEvent
-from PyQt5.QtWidgets import QAbstractItemView, QGraphicsItem, QWidget
+from PySide6.QtGui import QPaintEvent, QMouseEvent, QWheelEvent
+from PySide6.QtWidgets import QAbstractItemView, QGraphicsItem, QWidget
 
 from ..delegate.icon_delegate import IconCheckDelegate, IconType
 from .. import style
@@ -17,8 +17,8 @@ from .sprite_list_box_ui import SpriteListBoxUi
 
 
 class SpriteListBox(QWidget):
-    sigEnabledChanged = pyqtSignal(bool)
-    sigItemChanged = pyqtSignal(QModelIndex)
+    sigEnabledChanged = Signal(bool)
+    sigItemChanged = Signal(QModelIndex)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,46 +51,46 @@ class SpriteListBox(QWidget):
         self._ui.copyBtn.clicked.connect(self._copyItem)
         self._ui.list.clicked.connect(self._selectItem)
 
-    @pyqtSlot()
+    @Slot()
     def _moveItemUp(self) -> None:
         index = self._ui.list.currentIndex()
         if self._ui.list.model().moveRowUp(index):
             next_ = self._ui.list.model().createIndex(index.row() - 1, 0)
             self._ui.list.setCurrentIndex(next_)
 
-    @pyqtSlot()
+    @Slot()
     def _moveItemDown(self) -> None:
         index = self._ui.list.currentIndex()
         if self._ui.list.model().moveRowDown(index):
             next_ = self._ui.list.model().createIndex(index.row() + 1, 0)
             self._ui.list.setCurrentIndex(next_)
 
-    @pyqtSlot()
+    @Slot()
     def _deleteItem(self) -> None:
         index = self._ui.list.currentIndex()
         self._ui.list.model().removeRow(index.row(), QModelIndex())
 
-    @pyqtSlot()
+    @Slot()
     def _copyItem(self) -> None:
         index = self._ui.list.currentIndex()
         self._ui.list.model().copyRow(index)
 
-    @pyqtSlot(QModelIndex)
+    @Slot(QModelIndex)
     def _selectItem(self, index: QModelIndex) -> None:
         self._ui.list.model().selectRow(index)
         self.sigItemChanged.emit(index)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def setCurrentItem(self, row: int) -> None:
         self._ui.list.setCurrentIndex(
             self._ui.list.model().createIndex(row, 0, QModelIndex())
         )
 
-    @pyqtSlot()
+    @Slot()
     def clearSelection(self) -> None:
         self._ui.list.clearSelection()
 
-    @pyqtSlot(int)
+    @Slot(int)
     def onListSizeChanged(self, size: int) -> None:
         if size > 0:
             self._buttonState(True)

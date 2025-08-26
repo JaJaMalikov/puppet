@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QPointF, QRectF, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QColor, QPainter, QPen
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QPointF, QRectF, Qt, Signal, Slot
+from PySide6.QtGui import QColor, QPainter, QPen
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsObject,
     QStyleOptionGraphicsItem,
@@ -13,7 +13,7 @@ from .. import grid
 
 
 class TrackItem(QGraphicsObject):
-    sigCollapseChange = pyqtSignal(bool, int)
+    sigCollapseChange = Signal(bool, int)
 
     def __init__(
         self,

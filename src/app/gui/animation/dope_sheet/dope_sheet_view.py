@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QRectF, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QFontMetrics, QKeyEvent, QMouseEvent, QPainter, QWheelEvent
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QRectF, Qt, Signal, Slot
+from PySide6.QtGui import QFontMetrics, QKeyEvent, QMouseEvent, QPainter, QWheelEvent
+from PySide6.QtWidgets import (
     QApplication,
     QGraphicsScene,
     QGraphicsView,
@@ -108,11 +108,11 @@ class DopeSheetView(QGraphicsView):
             QApplication.restoreOverrideCursor()
         super().mouseReleaseEvent(e)
 
-    @pyqtSlot(bool)
+    @Slot(bool)
     def setFollowPlayHead(self, follow: bool) -> None:
         self._followPlayHead = follow
 
-    @pyqtSlot(float)
+    @Slot(float)
     def onPlayHeadPositionChange(self, pos: float) -> None:
         if self._scale.clicked:
             # don't scroll the view

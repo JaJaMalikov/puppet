@@ -1,8 +1,8 @@
 from typing import Any
 
-from PyQt5.QtCore import QPointF, QRectF, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QBrush, QColor, QPainter, QPen
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QPointF, QRectF, Qt, Signal, Slot
+from PySide6.QtGui import QBrush, QColor, QPainter, QPen
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsRectItem,
     QGraphicsSceneMouseEvent,
@@ -66,12 +66,12 @@ class Rectangle(QGraphicsRectItem):
         if e.buttons() & Qt.LeftButton:
             super().mouseMoveEvent(e)
 
-    @pyqtSlot(QRectF)
+    @Slot(QRectF)
     def resize(self, change: QRectF) -> None:
         self.prepareGeometryChange()
         self.setRect(change)
 
-    @pyqtSlot(QPointF)
+    @Slot(QPointF)
     def position(self, change: QPointF) -> None:
         self.prepareGeometryChange()
         self.setRect(

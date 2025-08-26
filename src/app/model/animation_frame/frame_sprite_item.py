@@ -1,9 +1,9 @@
 import typing
 from enum import IntEnum
 
-from PyQt5.QtCore import QLineF, QPoint, QPointF, QRectF, Qt, QVariant, pyqtSlot
-from PyQt5.QtGui import QColor, QKeyEvent, QPainter, QPainterPath, QPen, QPixmap
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QLineF, QPoint, QPointF, QRectF, Qt, QVariant, Slot
+from PySide6.QtGui import QColor, QKeyEvent, QPainter, QPainterPath, QPen, QPixmap
+from PySide6.QtWidgets import (
     QAction,
     QGraphicsItem,
     QGraphicsPixmapItem,

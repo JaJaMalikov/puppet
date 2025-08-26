@@ -1,8 +1,8 @@
 from typing import NamedTuple
 
-from PyQt5.QtCore import QLineF, QPointF, QRectF, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QBrush, QColor, QPainter, QPen, QResizeEvent, QWheelEvent
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QLineF, QPointF, QRectF, Qt, Signal, Slot
+from PySide6.QtGui import QBrush, QColor, QPainter, QPen, QResizeEvent, QWheelEvent
+from PySide6.QtWidgets import (
     QFrame,
     QGraphicsItem,
     QGraphicsView,

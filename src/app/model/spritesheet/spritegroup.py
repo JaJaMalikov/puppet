@@ -1,6 +1,6 @@
 import typing
 
-from PyQt5.QtCore import QObject, pyqtSignal
+from PySide6.QtCore import QObject, Signal
 
 from .sprite import Sprite
 from .spritesheet import SpriteSheet
@@ -61,8 +61,8 @@ class SpriteGroup:
 
 class SpriteGroupCollectionModel(QObject):
 
-    sigGroupAdded = pyqtSignal(list)
-    sigGroupDeleted = pyqtSignal(list)
+    sigGroupAdded = Signal(list)
+    sigGroupDeleted = Signal(list)
 
     def __init__(self) -> None:
         super().__init__()
