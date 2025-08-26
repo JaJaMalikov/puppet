@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QRectF, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QColor, QFontMetrics, QPainter, QPen
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QRectF, Qt, Signal, Slot
+from PySide6.QtGui import QColor, QFontMetrics, QPainter, QPen
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsObject,
     QGraphicsSceneMouseEvent,
@@ -22,8 +22,8 @@ __textY__ = 3
 
 
 class TimeScaleItem(QGraphicsObject):
-    sigSetPlayHeadPosition = pyqtSignal(float)
-    sigClickedTimeScale = pyqtSignal()
+    sigSetPlayHeadPosition = Signal(float)
+    sigClickedTimeScale = Signal()
 
     def __init__(self, width: float, fm: QFontMetrics) -> None:
         super().__init__()
@@ -82,10 +82,10 @@ class TimeScaleItem(QGraphicsObject):
                     posx, __height__ - __tickHeight__, posx, __height__ - 1
                 )
 
-    @pyqtSlot(float)
+    @Slot(float)
     def onAnimationLengthChanged(self, length: float) -> None:
         self._rect.setWidth(length)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def onVerticalScrollBarChange(self, scroll: int) -> None:
         self.setY(scroll)

@@ -1,9 +1,9 @@
 import typing
 from enum import IntEnum
 
-from PyQt5.QtCore import Qt, QObject, pyqtSignal
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPixmapItem
+from PySide6.QtCore import Qt, QObject, Signal
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QGraphicsItem, QGraphicsPixmapItem
 
 from ...util.image import Image
 from .frame_sprite_item import FrameSpriteItem, ItemEvent
@@ -26,13 +26,13 @@ class Index(IntEnum):
 class FrameSprite(QObject):
     """A sprite part of a frame"""
 
-    sigAddToScene = pyqtSignal(QGraphicsItem)
-    sigDelFromScene = pyqtSignal(QGraphicsItem)
-    sigInternalDataChanged = pyqtSignal(list)
-    sigIncreaseZ = pyqtSignal(int)
-    sigDecreaseZ = pyqtSignal(int)
-    sigHint = pyqtSignal(int)
-    sigDeHint = pyqtSignal()
+    sigAddToScene = Signal(QGraphicsItem)
+    sigDelFromScene = Signal(QGraphicsItem)
+    sigInternalDataChanged = Signal(list)
+    sigIncreaseZ = Signal(int)
+    sigDecreaseZ = Signal(int)
+    sigHint = Signal(int)
+    sigDeHint = Signal()
 
     properties = [
         "name",

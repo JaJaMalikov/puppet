@@ -1,12 +1,12 @@
 import typing
 
-from PyQt5.QtCore import QPoint, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QMouseEvent, QWheelEvent
-from PyQt5.QtWidgets import QSlider, QStyle, QStyleOptionSlider, QWidget
+from PySide6.QtCore import QPoint, Qt, Signal, Slot
+from PySide6.QtGui import QMouseEvent, QWheelEvent
+from PySide6.QtWidgets import QSlider, QStyle, QStyleOptionSlider, QWidget
 
 
 class DoubleSlider(QSlider):
-    valueChanged = pyqtSignal(float)
+    valueChanged = Signal(float)
 
     def __init__(self, orientation, parent: typing.Optional[QWidget] = None):
         super().__init__(orientation)
@@ -28,7 +28,7 @@ class DoubleSlider(QSlider):
     def value(self) -> float:
         return self._intToFloat(super().value())
 
-    @pyqtSlot(float, bool)
+    @Slot(float, bool)
     def setValue(self, value: float, emit: bool = True) -> None:
         if emit:
             super().setValue(self._floatToInt(value))

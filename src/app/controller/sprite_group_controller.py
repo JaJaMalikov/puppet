@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QObject, pyqtSlot
+from PySide6.QtCore import QObject, Slot
 
 from ..model.spritesheet import SpriteGroup, SpriteGroupCollectionModel, SpriteSheet
 
@@ -11,7 +11,7 @@ class SpriteGroupController(QObject):
 
         self._model = model
 
-    @pyqtSlot(SpriteSheet)
+    @Slot(SpriteSheet)
     def addGroup(self, sheet: SpriteSheet) -> None:
         """Add a new group to the collection created from a spritesheet
 
@@ -27,7 +27,7 @@ class SpriteGroupController(QObject):
 
         self._model.addGroup(group, sheet.name)
 
-    @pyqtSlot(str)
+    @Slot(str)
     def delGroup(self, id: str) -> None:
         """Delete a group from the model
 
@@ -36,7 +36,7 @@ class SpriteGroupController(QObject):
         """
         self._model.delGroup(id)
 
-    @pyqtSlot(str)
+    @Slot(str)
     def showGroup(self, id: str):
         """Show a single group in the scene
 

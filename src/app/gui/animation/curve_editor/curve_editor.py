@@ -1,6 +1,6 @@
 import typing
 
-from PyQt5.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget
 
 from .curve_editor_ui import CurveEditorUi
 

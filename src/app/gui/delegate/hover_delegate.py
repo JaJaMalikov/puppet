@@ -1,6 +1,6 @@
 from enum import IntEnum
 
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QAbstractItemModel,
     QEvent,
     QModelIndex,
@@ -10,16 +10,16 @@ from PyQt5.QtCore import (
     QSize,
     Qt,
     QVariant,
-    pyqtSignal,
+    Signal,
 )
-from PyQt5.QtGui import QIcon, QKeyEvent, QMouseEvent, QPainter
-from PyQt5.QtWidgets import QItemDelegate, QStyle, QStyleOptionViewItem
+from PySide6.QtGui import QIcon, QKeyEvent, QMouseEvent, QPainter
+from PySide6.QtWidgets import QItemDelegate, QStyle, QStyleOptionViewItem
 
 from ...resources import resources
 
 
 class ItemHoverDelegate(QItemDelegate):
-    sigCheckState = pyqtSignal(bool)
+    sigCheckState = Signal(bool)
 
     def __init__(self, parent: QObject) -> None:
         """Delegate for calling a method when an item in a qtreeview is hovered

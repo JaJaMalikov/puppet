@@ -1,9 +1,9 @@
 import random
 import typing
 
-from PyQt5.QtCore import QPoint, QRect, QRectF, QSize, Qt
-from PyQt5.QtGui import QColor, QImage, QPainter, QPainterPath, QPixmap, QTransform
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPixmapItem, QGraphicsScene
+from PySide6.QtCore import QPoint, QRect, QRectF, QSize, Qt
+from PySide6.QtGui import QColor, QImage, QPainter, QPainterPath, QPixmap, QTransform
+from PySide6.QtWidgets import QGraphicsItem, QGraphicsPixmapItem, QGraphicsScene
 
 
 class Image:

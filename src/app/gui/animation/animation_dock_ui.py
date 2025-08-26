@@ -1,7 +1,7 @@
 import typing
 
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import (
     QDockWidget,
     QHBoxLayout,
     QSplitter,

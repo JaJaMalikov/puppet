@@ -1,5 +1,5 @@
 RM  := rm -rf
-RC  := pyrcc5
+RC  := pyside6-rcc
 PY 	:= python
 
 .PHONY:

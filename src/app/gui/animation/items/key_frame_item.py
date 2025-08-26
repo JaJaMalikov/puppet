@@ -2,9 +2,9 @@ import typing
 from enum import IntEnum
 
 
-from PyQt5.QtCore import QPointF, QRectF, Qt, pyqtSignal
-from PyQt5.QtGui import QColor, QFontMetrics, QPainter, QPen
-from PyQt5.QtWidgets import (
+from PySide6.QtCore import QPointF, QRectF, Qt, Signal
+from PySide6.QtGui import QColor, QFontMetrics, QPainter, QPen
+from PySide6.QtWidgets import (
     QGraphicsItem,
     QGraphicsObject,
     QGraphicsSceneHoverEvent,
@@ -32,7 +32,7 @@ class KeyFrameItem(QGraphicsObject):
     __handleWidth__ = 2
     __handleHeight__ = grid.__trackHeight__
 
-    keyDurationChange = pyqtSignal(float)
+    keyDurationChange = Signal(float)
 
     def __init__(self, x: float, y: float, w: float, h: float) -> None:
         super().__init__()

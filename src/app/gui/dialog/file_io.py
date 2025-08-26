@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QFileInfo, Qt
-from PyQt5.QtWidgets import QFileDialog, QWidget
+from PySide6.QtCore import QFileInfo, Qt
+from PySide6.QtWidgets import QFileDialog, QWidget
 
 
 class FileIoDialog:

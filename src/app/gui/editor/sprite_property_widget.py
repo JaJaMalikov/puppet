@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QAbstractItemModel, QModelIndex, Qt, QVariant, pyqtSlot
-from PyQt5.QtGui import QMouseEvent, QPaintEvent, QWheelEvent
-from PyQt5.QtWidgets import QDataWidgetMapper, QWidget
+from PySide6.QtCore import QAbstractItemModel, QModelIndex, Qt, QVariant, Slot
+from PySide6.QtGui import QMouseEvent, QPaintEvent, QWheelEvent
+from PySide6.QtWidgets import QDataWidgetMapper, QWidget
 
 from ...model.animation_frame import AnimationFrameModel
 from .. import style
@@ -45,11 +45,11 @@ class SpritePropertyWidget(QWidget):
             self._mapper.submit, Qt.QueuedConnection
         )
 
-    @pyqtSlot(QModelIndex)
+    @Slot(QModelIndex)
     def onSelectedItemChanged(self, index: QModelIndex) -> None:
         self._mapper.setCurrentModelIndex(index)
 
-    @pyqtSlot(bool)
+    @Slot(bool)
     def setEnabled(self, enabled: bool) -> None:
         super().setEnabled(enabled)
 

@@ -1,7 +1,7 @@
 import typing
 
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QWidget
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import QWidget
 
 from ..widget import MaximizableDock
 from .animation_dock_ui import AnimationDockUi
@@ -19,15 +19,15 @@ class AnimationEditorDock(MaximizableDock):
         self._ui.setupUi(self)
         self.TestPopulate()
 
-    @pyqtSlot()
+    @Slot()
     def advance(self) -> None:
         self._ui.dopeSheet._advance()
 
-    @pyqtSlot()
+    @Slot()
     def rewind(self) -> None:
         self._ui.dopeSheet._rewind()
 
-    @pyqtSlot()
+    @Slot()
     def setKeyframe(self) -> None:
         self._ui.dopeSheet._setKeyFrame()
 

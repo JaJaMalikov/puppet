@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QObject, Qt, pyqtSignal, pyqtSlot
+from PySide6.QtCore import QObject, Qt, Signal, Slot
 
 
 class SpriteListBoxController(QObject):

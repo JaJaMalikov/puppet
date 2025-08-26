@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QCoreApplication, QObject, Qt, pyqtSlot
-from PyQt5.QtWidgets import QGraphicsItem, QProgressDialog
+from PySide6.QtCore import QCoreApplication, QObject, Qt, Slot
+from PySide6.QtWidgets import QGraphicsItem, QProgressDialog
 
 from ..gui.dialog import OpenImageDialog
 from ..model.animation_frame import FrameSprite
@@ -13,7 +13,7 @@ class SpritePaletteController(QObject):
 
         self._document: Document = document
 
-    @pyqtSlot()
+    @Slot()
     def addSpriteSheet(self) -> None:
         dialog = OpenImageDialog(None, "Open Images", "", "Sprite Sheet Images (*.png)")
         if dialog.exec() == OpenImageDialog.Accepted:
@@ -42,11 +42,11 @@ class SpritePaletteController(QObject):
 
             progress.setValue(len(paths))
 
-    @pyqtSlot(str)
+    @Slot(str)
     def delSpriteSheet(self, id: str) -> None:
         self._document.spriteSheets().delSpriteSheet(id)
 
-    @pyqtSlot(QGraphicsItem)
+    @Slot(QGraphicsItem)
     def selectedSprite(self, sprite: Sprite) -> None:
         # TODO remember to change when the document changes
         self._document._currentEditableFrame.fromPixmap(sprite._pixmap)

@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QFileInfo, Qt
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QFileDialog, QLabel, QVBoxLayout, QWidget
+from PySide6.QtCore import QFileInfo, Qt
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QFileDialog, QLabel, QVBoxLayout, QWidget
 
 
 class OpenImageDialog(QFileDialog):

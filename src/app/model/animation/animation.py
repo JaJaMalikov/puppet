@@ -1,6 +1,6 @@
 import typing
 
-from PyQt5.QtCore import Qt, QObject, pyqtSignal, pyqtSlot
+from PySide6.QtCore import Qt, QObject, Signal, Slot
 
 from ..animation_frame import AnimationFrame
 

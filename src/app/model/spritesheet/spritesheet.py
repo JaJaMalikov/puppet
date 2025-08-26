@@ -1,8 +1,8 @@
 import typing
 from pathlib import Path
 
-from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QColor, QPixmap
+from PySide6.QtCore import QObject, Signal, Slot
+from PySide6.QtGui import QColor, QPixmap
 from spriteutil.spritesheet import SpriteSheet as Sheet
 
 from .frame import Frame
@@ -119,8 +119,8 @@ class SpriteSheet:
 
 class SpriteSheetCollectionModel(QObject):
 
-    sigSpriteSheetAdded = pyqtSignal(SpriteSheet)
-    sigSpriteSheetRemoved = pyqtSignal(str)
+    sigSpriteSheetAdded = Signal(SpriteSheet)
+    sigSpriteSheetRemoved = Signal(str)
 
     def __init__(self) -> None:
         super().__init__()

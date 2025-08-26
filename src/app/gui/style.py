@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QPoint, QRectF, QSize, QSizeF
-from PyQt5.QtGui import QColor, QPainter
-from PyQt5.QtWidgets import QWidget
+from PySide6.QtCore import QPoint, QRectF, QSize, QSizeF
+from PySide6.QtGui import QColor, QPainter
+from PySide6.QtWidgets import QWidget
 
 __brushColor__ = QColor(66, 66, 66, 230)
 __penColor__ = QColor(66, 66, 66, 255)

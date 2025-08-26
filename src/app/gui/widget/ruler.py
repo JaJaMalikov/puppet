@@ -1,14 +1,14 @@
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QLineF,
     QPoint,
     QRectF,
     QSize,
     Qt,
-    pyqtProperty,
-    pyqtSignal,
-    pyqtSlot,
+    Property,
+    Signal,
+    Slot,
 )
-from PyQt5.QtGui import (
+from PySide6.QtGui import (
     QColor,
     QFontMetrics,
     QMouseEvent,
@@ -18,11 +18,11 @@ from PyQt5.QtGui import (
     QPen,
     QResizeEvent,
 )
-from PyQt5.QtWidgets import QWidget, qApp
+from PySide6.QtWidgets import QWidget, qApp
 
 
 class Ruler(QWidget):
-    sizeChanged = pyqtSignal(QSize)
+    sizeChanged = Signal(QSize)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -64,7 +64,7 @@ class Ruler(QWidget):
 
         return super().resizeEvent(event)
 
-    @pyqtSlot(int)
+    @Slot(int)
     def setOffset(self, value: int) -> None:
         self._offset = value
         self.update()

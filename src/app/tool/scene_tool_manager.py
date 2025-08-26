@@ -1,7 +1,7 @@
 from importlib import import_module as imodule
 
-from PyQt5.QtCore import QCoreApplication, QEvent, QObject, Qt, pyqtSlot
-from PyQt5.QtWidgets import QGraphicsScene
+from PySide6.QtCore import QCoreApplication, QEvent, QObject, Qt, Slot
+from PySide6.QtWidgets import QGraphicsScene
 
 from .abstract_tool import AbstractTool
 

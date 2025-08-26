@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QAction, QMainWindow
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QAction, QMainWindow
 
 from ..model.document import Document
 from .app_window_ui import EditModeUi

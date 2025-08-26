@@ -1,6 +1,6 @@
 import typing
 
-from PyQt5.QtCore import QObject, Qt, QTimer, pyqtSignal, pyqtSlot
+from PySide6.QtCore import QObject, Qt, QTimer, Signal, Slot
 
 
 class PlayBackController(QObject):

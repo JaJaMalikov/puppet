@@ -1,14 +1,14 @@
-from PyQt5.QtCore import (
+from PySide6.QtCore import (
     QEasingCurve,
     QEvent,
     QObject,
     Qt,
     QTimeLine,
-    pyqtSlot,
-    pyqtSignal,
+    Slot,
+    Signal,
 )
-from PyQt5.QtGui import QMouseEvent
-from PyQt5.QtWidgets import QGraphicsView, QStyleOptionGraphicsItem
+from PySide6.QtGui import QMouseEvent
+from PySide6.QtWidgets import QGraphicsView, QStyleOptionGraphicsItem
 
 
 class ZoomControl(QObject):
@@ -20,7 +20,7 @@ class ZoomControl(QObject):
         max_ (float): Maximum zoom level (defaults to 25)
     """
 
-    zoomLevelChanged = pyqtSignal(float)
+    zoomLevelChanged = Signal(float)
 
     def __init__(self, view: QGraphicsView, min_: float = 1, max_: float = 25):
         super().__init__(view)
@@ -76,7 +76,7 @@ class ZoomControl(QObject):
         delta = newPos - oldPos
         self._view.translate(delta.x(), delta.y())
 
-    @pyqtSlot(float)
+    @Slot(float)
     def _scalingTime(self, val: float) -> None:
         oldPos = self._view.mapToScene(self._eventPos)
 
@@ -98,7 +98,7 @@ class ZoomControl(QObject):
         self._translate(oldPos)
         self.zoomLevelChanged.emit(level)
 
-    @pyqtSlot(float)
+    @Slot(float)
     def setValue(self, value: float) -> None:
         transform = self._view.transform()
         m12 = transform.m12()  # Vertical shearing
@@ -120,7 +120,7 @@ class ZoomControl(QObject):
             self._view.setTransform(transform)
             self._translate(oldPos)
 
-    @pyqtSlot()
+    @Slot()
     def _animationFinished(self) -> None:
         if self._numScalings > 0:
             self._numScalings -= 1

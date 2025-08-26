@@ -1,8 +1,8 @@
 import typing
 
-from PyQt5.QtCore import QObject, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QGraphicsRectItem, QGraphicsScene
+from PySide6.QtCore import QObject, Qt, Signal, Slot
+from PySide6.QtGui import QColor
+from PySide6.QtWidgets import QGraphicsRectItem, QGraphicsScene
 
 from ...util import Image
 from . import grid
@@ -35,7 +35,7 @@ class TrackManager(QObject):
         self._tracks[parentTrack].addPropertyTrack(track)
         self._updateSceneRect()
 
-    @pyqtSlot(bool, int)
+    @Slot(bool, int)
     def onTrackCollapseChange(self, collapse: bool, index: int) -> None:
         track = self._tracks[index]
         offset = -track.childBoxHeight if collapse else track.childBoxHeight

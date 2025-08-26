@@ -1,7 +1,7 @@
 import typing
 
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QAction, QDockWidget, QWidget
+from PySide6.QtCore import Qt, Signal, Slot
+from PySide6.QtWidgets import QAction, QDockWidget, QWidget
 
 
 class MaximizableDock(QDockWidget):
@@ -15,7 +15,7 @@ class MaximizableDock(QDockWidget):
         self.fullScreen.triggered.connect(self.onFullScreen)
         self.addAction(self.fullScreen)
 
-    @pyqtSlot(bool)
+    @Slot(bool)
     def onTopLevelChanged(self, value: bool) -> None:
         if self.isFloating():
             self.setWindowFlags(
@@ -27,7 +27,7 @@ class MaximizableDock(QDockWidget):
             )
             self.show()
 
-    @pyqtSlot()
+    @Slot()
     def onFullScreen(self) -> None:
         if self.isFloating():
             if not self.windowState() & Qt.WindowFullScreen:
